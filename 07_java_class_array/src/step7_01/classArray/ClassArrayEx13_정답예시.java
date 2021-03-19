@@ -6,147 +6,147 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Scanner;
 
-class StudentEx{
-	
-	String id = "";
-	String pw = "";
-	
-	void set_data(String id , String  pw) {
-		this.id = id; 
-		this.pw = pw;
-	}
-	
-	
-	void print_data() {
-		System.out.println("이름 : " + id + " 비밀번호 : " + pw);
-		
-	}
-	
-}
-
-
-
-class Manager {
-	
-	StudentEx[] list = null;
-	int stdCnt = 0;
-	
-	void add_StudentEx(StudentEx st) {
-		
-		if (stdCnt == 0) {
-			list = new StudentEx[1];
-		}
-		else if (stdCnt > 0) {
-			StudentEx[] temp = list;
-			list = new StudentEx[stdCnt + 1];
-			for (int i = 0; i < stdCnt; i++) {
-				list[i] = temp[i];
-			}
-			temp = null;
-		}
-		list[stdCnt] = st;
-		stdCnt++;
-		
-	}
-	
-	
-	
-	StudentEx remove_StudentEx (int index) {
-		
-		StudentEx del_st = list[index];
-		if (stdCnt == 1) {
-			list = null;
-		}
-		else if (stdCnt > 1) {
-			StudentEx [] temp = list;
-			list = new StudentEx[stdCnt -1];
-			for (int i = 0; i < index; i++) {
-				list[i] = temp[i];
-			}
-			for (int i = index; i < stdCnt -1; i++) {
-				list[i] = temp[i + 1];
-			}
-			temp = null;
-		}
-		stdCnt--;
-		
-		return del_st;
-		
-	}
-	
-	
-	
-	int check_id(StudentEx st) {
-		
-		int check = -1;
-		for (int i = 0; i < stdCnt; i++) {
-			if (list[i].id.equals(st.id)) {
-				check = i;
-				break;
-			}
-		}
-		return check;
-		
-	}
-	
-	
-	
-	void print_StudentEx() {
-		
-		for (int i = 0; i < stdCnt ;i++) {
-			list[i].print_data();
-		}
-		
-	}	
-	
-	
-	
-	String out_data() {
-		
-		String data = "";
-		if (stdCnt == 0){
-			return data;
-		}
-		data += stdCnt;
-		data += "\n";
-		for (int i = 0; i < stdCnt; i++) {
-			data += list[i].id;
-			data += ",";
-			data += list[i].pw;
-			if (stdCnt - 1 != i) {
-				data += "\n";
-			}
-		}
-		return data;
-		
-	}
-	
-	
-	
-	void sort_data() {
-		
-		for (int i = 0; i < stdCnt; i++) {
-			for (int n = 0; n < stdCnt ; n++) {
-				if (list[i].id.compareTo(list[n].id) > 0) {
-					StudentEx temp = list[i];
-					list[i] = list[n];
-					list[n] = temp;
-				}
-			}
-		}
-		
-	}
-	
-	
-	
-	void load_StudentEx (StudentEx [] temp , int count) {
-		
-		this.stdCnt = count;
-		this.list = temp;
-		
-	}
-	
-}
+//class StudentEx{
+//	
+//	String id = "";
+//	String pw = "";
+//	
+//	void set_data(String id , String  pw) {
+//		this.id = id; 
+//		this.pw = pw;
+//	}
+//	
+//	
+//	void print_data() {
+//		System.out.println("이름 : " + id + " 비밀번호 : " + pw);
+//		
+//	}
+//	
+//}
+//
+//
+//
+//class Manager {
+//	
+//	StudentEx[] list = null;
+//	int stdCnt = 0;
+//	
+//	void add_StudentEx(StudentEx st) {
+//		
+//		if (stdCnt == 0) {
+//			list = new StudentEx[1];
+//		}
+//		else if (stdCnt > 0) {
+//			StudentEx[] temp = list;
+//			list = new StudentEx[stdCnt + 1];
+//			for (int i = 0; i < stdCnt; i++) {
+//				list[i] = temp[i];
+//			}
+//			temp = null;
+//		}
+//		list[stdCnt] = st;
+//		stdCnt++;
+//		
+//	}
+//	
+//	
+//	
+//	StudentEx remove_StudentEx (int index) {
+//		
+//		StudentEx del_st = list[index];
+//		if (stdCnt == 1) {
+//			list = null;
+//		}
+//		else if (stdCnt > 1) {
+//			StudentEx [] temp = list;
+//			list = new StudentEx[stdCnt -1];
+//			for (int i = 0; i < index; i++) {
+//				list[i] = temp[i];
+//			}
+//			for (int i = index; i < stdCnt -1; i++) {
+//				list[i] = temp[i + 1];
+//			}
+//			temp = null;
+//		}
+//		stdCnt--;
+//		
+//		return del_st;
+//		
+//	}
+//	
+//	
+//	
+//	int check_id(StudentEx st) {
+//		
+//		int check = -1;
+//		for (int i = 0; i < stdCnt; i++) {
+//			if (list[i].id.equals(st.id)) {
+//				check = i;
+//				break;
+//			}
+//		}
+//		return check;
+//		
+//	}
+//	
+//	
+//	
+//	void print_StudentEx() {
+//		
+//		for (int i = 0; i < stdCnt ;i++) {
+//			list[i].print_data();
+//		}
+//		
+//	}	
+//	
+//	
+//	
+//	String out_data() {
+//		
+//		String data = "";
+//		if (stdCnt == 0){
+//			return data;
+//		}
+//		data += stdCnt;
+//		data += "\n";
+//		for (int i = 0; i < stdCnt; i++) {
+//			data += list[i].id;
+//			data += ",";
+//			data += list[i].pw;
+//			if (stdCnt - 1 != i) {
+//				data += "\n";
+//			}
+//		}
+//		return data;
+//		
+//	}
+//	
+//	
+//	
+//	void sort_data() {
+//		
+//		for (int i = 0; i < stdCnt; i++) {
+//			for (int n = 0; n < stdCnt ; n++) {
+//				if (list[i].id.compareTo(list[n].id) > 0) {
+//					StudentEx temp = list[i];
+//					list[i] = list[n];
+//					list[n] = temp;
+//				}
+//			}
+//		}
+//		
+//	}
+//	
+//	
+//	
+//	void load_StudentEx (StudentEx [] temp , int count) {
+//		
+//		this.stdCnt = count;
+//		this.list = temp;
+//		
+//	}
+//	
+//}
 
 
 public class ClassArrayEx13_정답예시 {
@@ -156,7 +156,20 @@ public class ClassArrayEx13_정답예시 {
 		Scanner scan = new Scanner(System.in);
 		Manager manager = new Manager();
 		
-		
+		/*
+		 * [1] 가입하기 : ID 중복검사 구현
+		 * [2] 탈퇴하기 : ID를 입력받아 탈퇴
+		 * [3] 정렬하기 : 이름을 국어사전 순으로 정렬
+		 * [4] 출력하기 : 데이터들을 화면에 출력
+		 * [5] 저장하기 : 아래와 같은 형식으로 저장
+		 * [6] 불러오기 : 파일에 저장된 내용을 불러오기
+		 * [7] 종료하기 : 반복문을 종료
+		 * 
+		 * 			예) 
+		 * 			2				// 회원 수
+		 *			qwer,1234		// id,pw	
+		 *			abcd,1111		// id, pw
+		 */
 		while (true) {
 			
 			System.out.println("1.가입 2.탈퇴 3.정렬 4.출력 5.저장 6.로드 7.종료");
